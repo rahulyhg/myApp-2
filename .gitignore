@@ -38,3 +38,6 @@ jspm_packages
 
 # jshint
 .jshintrc
+
+#.DS_Store
+.DS_Store
