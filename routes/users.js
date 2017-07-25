@@ -19,7 +19,7 @@ router.post('/logout', respohandler.addLogToken, preValidate.userLogoutValidate,
 router.post('/registration', respohandler.addLogToken, preValidate.userRegisterValidate, userProcess.userRegister, respohandler.jsonResponse);
 
 //doing
-router.post('/myProfile',respohandler.addLogToken, auth.validateAuthToken, respohandler.jsonResponse);
+router.post('/myProfile',respohandler.addLogToken, auth.validateAuthToken, userProcess.userProfile, respohandler.jsonResponse);
 
 /******************************** USER ACTION ******************************/
 router.post('/action/search', respohandler.addLogToken, respohandler.priTokenValidate, userAction.search, respohandler.jsonResponse);

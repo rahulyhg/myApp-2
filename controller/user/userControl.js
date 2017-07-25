@@ -5,6 +5,7 @@ var userSchema = require("../../model/userSchema");
 var Log = require("../../appUtil/logger");
 var statics = require("../../appUtil/appStatic");
 var debug = require("debug")("userControl");
+var userProfile = require("../../model/userProfileSchema");
 
 //constants
 var userObj = {};
@@ -132,7 +133,6 @@ userObj.logout = function(params, callb){
  * @return {[type]}        [description]
  */
 userObj.registration = function(params, callb){
-
 };
 
 /**
@@ -142,7 +142,39 @@ userObj.registration = function(params, callb){
  * @return {[type]}        [description]
  */
 userObj.getProfile = function(params, callb){
+	var error = {};
+	var query = {
+		profId: params.username
+	};
+	var subComp = ".getProfile";
+	var logId = params.logId;
 
+	userProfile.find(query, function(err, res){
+		if(err){
+			error.msg 		= statics.commonError.serverErr.displayMsg;
+			error.status 	= statics.commonError.serverErr.status;
+			error.code 		= statics.commonError.serverErr.code;
+			error.logId 	= logId;
+			error.err 		= err;
+
+			Log.error(componentName + subComp, logId, err);
+			return callb(error);
+		}
+
+		if(!res || res.length < 1){
+			error.msg 		= statics.commonError.unAuthenticate.displayMsg;
+			error.status 	= statics.commonError.unAuthenticate.status;
+			error.code 		= statics.commonError.unAuthenticate.code;
+			error.logId 	= logId;
+			error.err 		= "no record found or wrong loginToken" + JSON.stringify(query);
+
+			Log.error(componentName + subComp, logId, error);
+			return callb(error);
+		}
+
+		return callb(null, res);
+
+	});
 };
 
 module.exports = userObj;
