@@ -4,7 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-process.env.NODE_ENV = process.env.NODE_ENV || "local";
+var utils = require("./appUtil/commonUtil");
+process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 
 var users = require('./routes/users');
 

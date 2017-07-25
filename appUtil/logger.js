@@ -1,32 +1,73 @@
 "use strict";
 
-var loggerObj = new Object();
-var isConsole = true;
+var conf = require('../config/appConfig');
+var serverLog = require('../controller/common/serverLogs');
+var debug = require("debug")("logger");
 
-loggerObj.info = function function_name(componentName, trackingId, msgJson) {
+var loggerObj = new Object();
+var isConsole = conf.settings.isConsole;
+var isElasticLogger = conf.settings.isElasticLogger;
+
+loggerObj.info = function (componentName, trackingId, msgJson) {
 	if(isConsole){
 		this.consoleLogger(componentName, trackingId, msgJson, "INFO");
 	}
-}
 
-loggerObj.error = function function_name(componentName, trackingId, msgJson) {
+	if(isElasticLogger){
+		this.serverLogger(componentName, trackingId, msgJson, "INFO");
+	}
+};
+
+loggerObj.error = function (componentName, trackingId, msgJson) {
 	if(isConsole){
 		this.consoleLogger(componentName, trackingId, msgJson, "ERROR");
 	}
-}
 
-loggerObj.warn = function function_name(componentName, trackingId, msgJson) {
+	if(isElasticLogger){
+		this.serverLogger(componentName, trackingId, msgJson, "ERROR");
+	}
+};
+
+loggerObj.warn = function (componentName, trackingId, msgJson) {
 	if(isConsole){
 		this.consoleLogger(componentName, trackingId, msgJson, "WARN");
 	}
-}
 
-loggerObj.consoleLogger = function function_name(componentName, trackingId, msgJson, level) {
-	console.log({componentName: componentName, trackingId: trackingId, msgJson: msgJson, level: level});
-}
+	if(isElasticLogger){
+		this.serverLogger(componentName, trackingId, msgJson, "WARN");
+	}
+};
+
+loggerObj.consoleLogger = function (componentName, trackingId, msgJson, level) {
+	console.log({componentName: componentName, trackingId: trackingId, msgJson: msgJson, level: level, msg: "consoled"});
+};
+
+loggerObj.serverLogger = function (componentName, trackingId, msgJson, level){
+
+	debug({componentName: componentName, trackingId: trackingId, msgJson: msgJson, level: level});
+
+	var body = {
+		  	logId: trackingId,
+		    componentName: componentName,
+		    level: level,
+		    jsonData: msgJson,
+		    createAt: new Date()
+		 };
+	serverLog.write(body, body.logId, function(err, result){
+		
+		if(result){
+			console.log({componentName: componentName, trackingId: trackingId, msgJson: msgJson, level: level, msg: "successfully inserted to logs"});
+		}
+		else{
+			console.log({componentName: componentName, trackingId: trackingId, msgJson: msgJson, level: level, msg: "failed inserted to logs"});
+		}
+	});
+};
 
 module.exports = loggerObj;
 
-// (function(){
-// 	loggerObj.info("test","asdfghjk",{funn: "test"});
-// }());
+(function(){
+	if(require.main === module){
+	  //loggerObj.info("test","asdscdsdfghjk",[{fun: "test"}]);
+	}
+}());

@@ -8,7 +8,7 @@
 	"redis":{
 		"host":"127.0.0.1",
 		"port": 6379,
-		"connect_timeout": 36000
+		"connect_timeout": 360000
 	},
 	"es":{
 		"logsTrace":{

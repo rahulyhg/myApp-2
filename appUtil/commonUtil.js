@@ -73,15 +73,13 @@ utls.uuid = function(size, typen) {
     return uid;
 }
 
-
 module.exports = utls;
 
-// // test cases
-// (function(){
-//     // if(require.main == module){
+// test cases
+(function(){
+    if(require.main == module){
+     console.log(utls.uuid(64, "AN"));
+      //console.log(utls.ipAddress());
 
-//     // }
-//     console.log(utls.uuid());
-//     //console.log(utls.ipAddress());
-
-// }());
+    }
+}());

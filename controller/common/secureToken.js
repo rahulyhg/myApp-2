@@ -8,56 +8,82 @@ var config = require('../../config/appConfig');
 var obj = new Object();
 var ttl = config.redis.connect_timeout;
 
-obj.saveToRedis = function(key, value, cb) {
+obj.saveToRedis = function(key, value, logToken, cb) {
 	redisClient.hmset(key, value, function(err, result){
 		if(err){
-			logger.error("secureToken>>saveToRedis", key, err);
+			logger.error("secureToken.saveToRedis", logToken, err);
 			return cb(err);
 		}
 
 		if(result != "OK"){
-			logger.error("secureToken>>saveToRedis", key, result);
+			logger.error("secureToken.saveToRedis", logToken, result);
 			return cb(err);
 		}
 
 		redisClient.expire(key, ttl, function(error, resp){
 			if(err)
-				logger.warn("secureToken>>saveToRedis>>expire", key, error);
+				logger.warn("secureToken.saveToRedis.expire", logToken, error);
 			else
-				logger.info("secureToken>>saveToRedis>>expire", key, resp);
+				logger.info("secureToken.saveToRedis.expire", logToken, resp);
 		});
 
-		logger.info("secureToken>>saveToRedis", key, result);
+		logger.info("secureToken.saveToRedis", logToken, result);
 		return cb(null, result);
 
 	});
-}
+};
 
-obj.getFromRedis = function(key, cb) {
-	redisClient.hgetall(key, function(err, result){
+obj.removeFromRedis = function(key, logToken, cb) {
+	redisClient.del(key, function(err, result){
 		if(err){
-			logger.error("getFromRedis>>getFromRedis", key, err);
+			logger.error("secureToken.removeFromRedis", logToken, err);
 			return cb(err);
 		}
 
-		logger.info("getFromRedis>>saveToRedis", key, result);
-		return cb(null, result);
+		if(result != 1){
+			logger.error("secureToken.removeFromRedis", logToken, result);
+			return cb(err);
+		}
 
+		logger.info("secureToken.removeFromRedis", logToken, result);
+		return cb(null, result);
 	});
-}
+};
+
+obj.getFromRedis = function(key, logToken, cb) {
+	redisClient.hgetall(key, function(err, result){
+		if(err){
+			logger.error("secureToken.getFromRedis", logToken, err);
+			return cb(err);
+		}
+
+		logger.info("secureToken.getFromRedis", logToken, result);
+		return cb(null, result);
+	});
+};
 
 module.exports = obj;
 
-// (function(){
-// 	obj.saveToRedis("123456wertyucvb", {"value": "fun", name: 12445}, function(err, result){
+(function(){
+	if(require.main == module){
 
-// 		console.log(err,result);
+		// obj.saveToRedis("6tfdw6fgwgf7f784", {"value": "fun", name: 12445}, "123456wertyucvb", function(err, result){
 
-// 	});
+		// 	console.log(err,result);
 
-// 	obj.getFromRedis("123456wertyucvb", function(err, result){
+		// }); 
+		
+		obj.getFromRedis("",  "123456wertyucvb", function(err, result){
 
-// 		console.log(err,result);
+			console.log(err,result);
 
-// 	});
-// }());
+		});
+
+		// obj.removeFromRedis("6tfdw6fgwgf7f784",  "123456wertyucvb", function(err, result){
+
+		// 	console.log(err,result);
+
+		// });
+	}
+
+}());
