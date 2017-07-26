@@ -13,7 +13,8 @@ broadband
 
 # Login 
 
-## url -> http://<server>/users/login
+## url -> http://codedep.in/users/login
+
 ### REQUEST
 ```
 {
@@ -23,7 +24,7 @@ broadband
 
 ```
 
-### RESPONSE - 200 OK
+### SUCCESSFUL RESPONSE - 200 OK
 
 ```
 {
@@ -60,7 +61,7 @@ broadband
 
 ```
 
-### UN-REVIEWED PROFILE - 410
+### UN-REVIEWED PROFILE RESPONSE - 410
 
 ```
 
@@ -74,7 +75,7 @@ broadband
 
 ```
 
-### DE-ACTIVATED PROFILE - 420
+### DE-ACTIVATED PROFILE RESPONSE - 420
 
 ```
 
@@ -85,5 +86,52 @@ broadband
     "displayMsg": "your profile is deactivated, please contact admin",
     "logId": "4436103008607090"
 }
+
+```
+
+# Logout
+
+## url -> http://codedep.in/users/logout
+
+### REQUEST
+```
+{
+    "username":"test@test.com",
+    "loginToken": "4361279910302854xj9xPD30BqO7i5PT"
+}
+
+```
+
+### SUCCESSFUL RESPONSE - 200 OK
+
+```
+{
+    "data": {
+        "loginToken": "4361279910302854xj9xPD30BqO7i5PT"
+    },
+    "status": "success",
+    "code": 200,
+    "displayMsg": "no msg to display",
+    "logId": "2032103057362439"
+}
+
+```
+
+### VALIDATION ERROR RESPONSE - 500
+
+```
+[
+    {
+        "property": "instance.loginToken",
+        "message": "does not meet minimum length of 1",
+        "schema": {
+            "type": "string",
+            "minLength": 1
+        },
+        "name": "minLength",
+        "argument": 1,
+        "stack": "instance.loginToken does not meet minimum length of 1"
+    }
+]
 
 ```
