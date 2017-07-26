@@ -29,26 +29,27 @@ handlerObj.priTokenValidate = function (req, res, next) {
  * @return {[type]}        [description]
  */
 handlerObj.jsonResponse = function (req, res, next) {
+	var responseObj;
 	if(req.body && req.body.respoJson){
 		
 		var respo = req.body.respoJson;
-		var responseObj = {
+		 responseObj = {
 			data: respo.data || "NA",
 			status: respo.status || "NA",
 			code: respo.code || 200,
 			displayMsg: respo.msg || "no msg to display",
 			logId: req.body.logId
-		}
+		};
 		res.status(respo.code).send(responseObj);
 	}
 	else{
-		var responseObj = {
+		 responseObj = {
 			data: "NA",
 			status: statics.commonError.noResultFound.status,
 			code: statics.commonError.noResultFound.code,
 			displayMsg: statics.commonError.noResultFound.displayMsg,
 			logId: req.body.logId
-		}
+		};
 		res.status(statics.commonError.noResultFound.code).send(responseObj);
 	}
 };
