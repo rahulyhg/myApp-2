@@ -135,6 +135,131 @@ broadband
 ]
 
 ```
+
+# myProfile
+
+## url -> http://codedep.in/users/myProfile
+
+### REQUEST
+```
+{
+    "loginToken": "1185530819216802Vjlfx5b7DCnI2aAJ"
+}
+
+```
+
+### SUCCESSFUL RESPONSE - 200 OK
+
+```
+{
+    "data": [
+        {
+            "_id": "5951f56cac9568c0138efe71",
+            "userid": "",
+            "visibleProfile": {
+                "contact": true
+            },
+            "desiredPartner": {
+                "manglik": [],
+                "vegiterian": 1,
+                "smoke": 0,
+                "drink": 1,
+                "hroscoperMustMatch": 1,
+                "annualIncomeMin": 100000,
+                "annualIncomeMax": 500000,
+                "horoscope": []
+            },
+            "contact": {
+                "email": "",
+                "phone_no": "",
+                "mobile": ""
+            },
+            "lifeStyle": {
+                "vegiterian": 1,
+                "smoke": 0,
+                "drink": 1,
+                "ownHouse": 1,
+                "ownCar": 1,
+                "cooking": 1,
+                "about": "",
+                "hobbies": [
+                    "traveling",
+                    "sports"
+                ]
+            },
+            "horoscope": {
+                "mustMatch": 1,
+                "rashi": "",
+                "nakshatra": "",
+                "manglik": ""
+            },
+            "professional": {
+                "about": "",
+                "orgName": "",
+                "occupation": "",
+                "annualIncome": 1000000,
+                "orgType": ""
+            },
+            "family": {
+                "about": "",
+                "familyStatus": "",
+                "familyType": "",
+                "familyIncome": "",
+                "fatherOccupation": "",
+                "motherOccupation": "",
+                "brothers": 2,
+                "sisters": 4
+            },
+            "education": {
+                "hightestEdu": "",
+                "PG": "",
+                "PGCollege": "",
+                "UG": "",
+                "UGCollege": ""
+            },
+            "basic": {
+                "firstName": "mohit",
+                "middleName": "",
+                "lastName": "gupta",
+                "DOB": "13/11/1990",
+                "TOB": "8:00 PM",
+                "complex": "",
+                "disablity": "",
+                "gender": "Male",
+                "aboutMe": "",
+                "height": 1.8,
+                "maritialStatus": "",
+                "belongsToCountry": "",
+                "belongsToState": "",
+                "belongsToCity": "",
+                "currentToCountry": "",
+                "currentToState": "",
+                "currentToCity": "",
+                "profileManagedBy": "",
+                "languageknown": [
+                    "hindi",
+                    "english"
+                ]
+            },
+            "profileStatus": {
+                "certificatedUploaded": 1,
+                "certificatedApproved": 0,
+                "profileInSearch": 1,
+                "imagesApproved": 0,
+                "loginToken": ""
+            }
+        }
+    ],
+    "status": "success",
+    "code": 200,
+    "displayMsg": "no msg to display",
+    "logId": "2057192191637906"
+}
+
+```
+
+
+
 # cities 
 
 ## url -> http://codedep.in/common/cities
