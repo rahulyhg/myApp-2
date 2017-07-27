@@ -90,7 +90,7 @@ api.userLogout = function(req, res, next){
 };
 
 api.userProfile = function(req, res, next){
-		var params = {
+	var params = {
 		loginToken: req.body.loginToken || "",
 		logId: req.body.logId || ""
 	};
