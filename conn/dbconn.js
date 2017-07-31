@@ -2,8 +2,12 @@
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
+var dbconn = require("../config/appConfig");
+
 //Set up default mongoose connection
-var mongoDB = 'mongodb://127.0.0.1/myapp';
+//var mongoDB = 'mongodb://127.0.0.1/myapp';
+
+var mongoDB = dbconn.db.connectionString;
 mongoose.connect(mongoDB);
 
 //Get the default connection
@@ -22,6 +26,8 @@ db.once('open', function() {
 module.exports.db = db;
 module.exports.Schema = Schema;
 module.exports.ObjectId = ObjectId;
+
+
 
 
 

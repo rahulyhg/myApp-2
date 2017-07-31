@@ -1,9 +1,9 @@
 {
 	"db":{
-		"host":"127.0.0.1",
-		"port":12,
-		"dbname":"warehouse",
-		"connectionString":"mongodb://127.0.0.1/myapp",
+		"host": "ds127963.mlab.com",
+		"port": 27963,
+		"dbname":"myapphosted",
+		"connectionString":"mongodb://myapp:myapp@ds127963.mlab.com:27963/myapphosted",
 		"username": "myapp",
 		"password": "myapp"
 	},

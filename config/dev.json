@@ -3,7 +3,9 @@
 		"host":"127.0.0.1",
 		"port":12,
 		"dbname":"warehouse",
-		"connectionString":"mongodb"
+		"connectionString":"mongodb://127.0.0.1/myapp",
+		"username": "myapp",
+		"password": "myapp"
 	},
 	"redis":{
 		"host":"127.0.0.1",
