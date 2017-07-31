@@ -1,5 +1,5 @@
 var express = require('express');
-var respohandler = require('./common/respohandler');
+var respohandler = require('./common/respoHandler');
 var api = require('./api/index');
 var router = express.Router();
 
