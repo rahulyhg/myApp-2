@@ -1,0 +1,3 @@
+mongoexport --db myapp --collection userprofiles --out userprofiles.json
+
+mongoimport -h ds127963.mlab.com:27963 -d myapphosted -c userprofiles -u myapp -p myapp --file userprofiles.json
