@@ -107,7 +107,7 @@ var userRegsterSchema = {
 "properties": {
     "name"          : {"type": "string", "minLength":1},
     "username"      : {"type": "string", "format":"email", "minLength":1},
-    "pass"          : {"type": "string", "minLength":3}
+    "pass"          : {"type": "string", "minLength":3},
     "gender"        : {"type": "string", "minLength":1},
     "dob"           : {"type": "string", "minLength":9},
     "mothertounge"  : {"type": "string", "minLength":1},
