@@ -103,6 +103,23 @@ var userProfileSchema = {
     "required": ["basic", "education"]
 };
 
+var userRegsterSchema = {
+"properties": {
+    "name"          : {"type": "string", "minLength":1},
+    "username"      : {"type": "string", "format":"email", "minLength":1},
+    "pass"          : {"type": "string", "minLength":3}
+    "gender"        : {"type": "string", "minLength":1},
+    "dob"           : {"type": "string", "minLength":9},
+    "mothertounge"  : {"type": "string", "minLength":1},
+    "mobile"        : {"type": "string", "minLength":9},
+    "country"       : {"type": "string", "minLength":1}
+  },
+   "required": ["name", "username", "pass","gender", "dob", "mothertounge","mobile", "country"]
+
+};
+
+
+
 var logoutSchema = {
   "properties": {
     "username"   : {"type": "string", "format":"email", "minLength":1},
@@ -153,7 +170,7 @@ userObj.logoutValidate = function(params, callb){
  */
 userObj.registrationValidate = function(params, callb){
 
-	var validRes = v.validate(params, userProfileSchema).errors;
+	var validRes = v.validate(params, userRegsterSchema).errors;
 
 	if(!validRes.length){
 		return callb();

@@ -91,7 +91,7 @@ api.userLogout = function(req, res, next){
 
 api.userProfile = function(req, res, next){
 	var params = {
-		loginToken: req.body.loginToken || "",
+		profId: req.body.profId || "",
 		logId: req.body.logId || ""
 	};
 	LOG.info(componentName + ".userProfile", req.body.logId, params);

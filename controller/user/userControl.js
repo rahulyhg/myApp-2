@@ -73,6 +73,12 @@ userObj.login = function(params, callb){
 	});
 };
 
+/**
+ * [logout description]
+ * @param  {[type]} params [description]
+ * @param  {[type]} callb  [description]
+ * @return {[type]}        [description]
+ */
 userObj.logout = function(params, callb){
 	var error = {};
 	var query = {
@@ -133,6 +139,42 @@ userObj.logout = function(params, callb){
  * @return {[type]}        [description]
  */
 userObj.registration = function(params, callb){
+	
+};
+
+userObj.search = function(params, callb){
+	var error = {};
+	var query = {
+	};
+	var subComp = ".search";
+	var logId = params.logId;
+
+	userProfile.find(query, function(err, res){
+		if(err){
+			error.msg 		= statics.commonError.serverErr.displayMsg;
+			error.status 	= statics.commonError.serverErr.status;
+			error.code 		= statics.commonError.serverErr.code;
+			error.logId 	= logId;
+			error.err 		= err;
+
+			Log.error(componentName + subComp, logId, err);
+			return callb(error);
+		}
+
+		if(!res || res.length < 1){
+			error.msg 		= statics.commonError.unAuthenticate.displayMsg;
+			error.status 	= statics.commonError.unAuthenticate.status;
+			error.code 		= statics.commonError.unAuthenticate.code;
+			error.logId 	= logId;
+			error.err 		= "no record found or wrong loginToken" + JSON.stringify(query);
+
+			Log.error(componentName + subComp, logId, error);
+			return callb(error);
+		}
+
+		return callb(null, res);
+
+	});
 };
 
 /**
@@ -144,7 +186,7 @@ userObj.registration = function(params, callb){
 userObj.getProfile = function(params, callb){
 	var error = {};
 	var query = {
-		profId: params.username
+		_id: params.profId
 	};
 	var subComp = ".getProfile";
 	var logId = params.logId;

@@ -22,7 +22,8 @@ var userProfileSchema = new conn.Schema(
         "disablity" : String,
         "gender" : String,
         "aboutMe" : String,
-        "height" : Number,
+        "height" : String,
+        "weight": String,
         "maritialStatus" : String,
         "languageknown" : [String],
         "belongsToCountry" : String,
@@ -31,7 +32,9 @@ var userProfileSchema = new conn.Schema(
         "currentToCountry" : String,
         "currentToState" : String,
         "currentToCity" : String,
-        "profileManagedBy" : String
+        "profileManagedBy" : String,
+        "religion": String,
+        "cast" : String
     },
     "education" : {
         "hightestEdu" : String,
@@ -44,6 +47,7 @@ var userProfileSchema = new conn.Schema(
         "about" : String,
         "familyStatus" : String,
         "familyType" : String,
+        "familyValues": String,
         "familyIncome" : String,
         "fatherOccupation" : String,
         "motherOccupation" : String,
@@ -54,7 +58,8 @@ var userProfileSchema = new conn.Schema(
         "about" : String,
         "orgName" : String,
         "occupation" : String,
-        "annualIncome" : Number,
+        "currency": String,
+        "annualIncome" : String,
         "orgType" : String
     },
     "horoscope" : {
@@ -64,9 +69,13 @@ var userProfileSchema = new conn.Schema(
         "manglik" : String
     },
     "lifeStyle" : {
-        "vegiterian" : Number,
+        "vegetarian" : Number,
+        "NonVegetarian": Number,
+        "Egaetarian": Number,
         "smoke" : Number,
+        "smokeOcc" : Number,
         "drink" : Number,
+        "drinkOcc" : Number,
         "ownHouse" : Number,
         "ownCar" : Number,
         "cooking" : Number,
@@ -87,7 +96,22 @@ var userProfileSchema = new conn.Schema(
         "annualIncomeMin" : Number,
         "annualIncomeMax" : Number
     },
-    "visibleProfile" : {}
+    "visibleProfile" : {},
+    "parnicYoga" : {
+        "arhaticLevel" : String,
+        "isTrainer" : Number,
+        "trainerLevel" : String,
+        "healing" : [ 
+            String
+        ],
+        "spritual" : [ 
+            String
+        ],
+        "prosperity" : [ 
+            String
+        ]
+    },
+     "profileImage" : String
 });
 
 var userProfile = conn.db.model('userprofiles', userProfileSchema);
