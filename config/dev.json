@@ -21,6 +21,6 @@
 	},
 	"settings":{
 		"isConsole": true,
-		"isElasticLogger": false
+		"isElasticLogger": true
 	}
 }

@@ -50,7 +50,45 @@ api.userLogin = function (req, res, next) {
 };
 
 api.userRegister = function (req, res, next) {
-	//userCtrl
+	var params = {
+			"name"          : req.body.name || "",
+		    "username"      : req.body.username || "",
+		    "pass"          : req.body.pass || "",
+		    "gender"        : req.body.gender || "",
+		    "dob"           : req.body.dob || "",
+		    "mothertounge"  : req.body.mothertounge || "",
+		    "mobile"        : req.body.mobile || "",
+		    "country"       : req.body.country || "",
+			logId: req.body.logId || ""
+		};
+	LOG.info(componentName + ".userRegister", req.body.logId, params);
+
+	if(req.body.username && req.body.pass && req.body.logId){
+
+		userCtrl.registration(params, function(err, result){
+
+			if(err){
+				req.body.respoJson = err;
+			}
+			else{
+				var jsonObj = statics.commonError.active;
+				var jsondata = {
+					status: jsonObj.status,
+					code: jsonObj.code,
+					displayMsg: jsonObj.displayMsg,
+					data: result
+				};
+
+				req.body.respoJson = jsondata;
+			}
+
+			next();
+		});
+
+	}else{
+		LOG.error(componentName + ".userRegister", req.body.logId, params);
+		next();
+	}
 };
 
 api.userLogout = function(req, res, next){

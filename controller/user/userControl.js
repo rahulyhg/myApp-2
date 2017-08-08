@@ -139,6 +139,151 @@ userObj.logout = function(params, callb){
  * @return {[type]}        [description]
  */
 userObj.registration = function(params, callb){
+	var error = {};
+	var query = {
+
+	};
+	var subComp = ".search";
+	var logId = params.registration;
+
+	var createProfileSchema = {
+	    "userid" : "",
+	    "profileStatus" : {
+	        "certificatedUploaded" : 0,
+	        "certificatedApproved" : 0,
+	        "profileInSearch" : 0,
+	        "imagesApproved" : 0,
+	        "loginToken" : ""
+	    },
+	    "basic" : {
+	        "firstName" : params.name,
+	        "middleName" : "",
+	        "lastName" : "",
+	        "DOB" : params.dob,
+	        "TOB" : "",
+	        "complex" : "",
+	        "disablity" : "",
+	        "gender" : params.gender,
+	        "aboutMe" : "",
+	        "height" : "",
+	        "weight": "",
+	        "maritialStatus" : "",
+	        "languageknown" : [""],
+	        "belongsToCountry" : params.country,
+	        "belongsToState" : "",
+	        "belongsToCity" : "",
+	        "currentToCountry" : "",
+	        "currentToState" : "",
+	        "currentToCity" : "",
+	        "profileManagedBy" : "",
+	        "religion": "",
+	        "cast" : ""
+	    },
+	    "education" : {
+	        "hightestEdu" : "",
+	        "PG" : "",
+	        "PGCollege" : "",
+	        "UG" : "",
+	        "UGCollege" : ""
+	    },
+	    "family" : {
+	        "about" : "",
+	        "familyStatus" : "",
+	        "familyType" : "",
+	        "familyValues": "",
+	        "familyIncome" : "",
+	        "fatherOccupation" : "",
+	        "motherOccupation" : "",
+	        "brothers" : 0,
+	        "sisters" : 0
+	    },
+	    "professional" : {
+	        "about" : "",
+	        "orgName" : "",
+	        "occupation" : "",
+	        "currency": "",
+	        "annualIncome" : "",
+	        "orgType" : ""
+	    },
+	    "horoscope" : {
+	        "mustMatch" : 0,
+	        "rashi" : "",
+	        "nakshatra" : "",
+	        "manglik" : ""
+	    },
+	    "lifeStyle" : {
+	        "vegetarian" : 0,
+	        "NonVegetarian": 0,
+	        "Egaetarian": 0,
+	        "smoke" : 0,
+	        "smokeOcc" : 0,
+	        "drink" : 0,
+	        "drinkOcc" : 0,
+	        "ownHouse" : 0,
+	        "ownCar" : 0,
+	        "cooking" : 0,
+	        "hobbies" : [""],
+	        "about" : ""
+	    },
+	    "contact" : {
+	        "email" : params.username,
+	        "phone_no" : "",
+	        "mobile" : params.mobile
+	    },
+	    "desiredPartner" : {
+	        "horoscope" : [""],
+	        "vegiterian" : 0,
+	        "smoke" : 0,
+	        "drink" : 0,
+	        "hroscoperMustMatch" : 0,
+	        "annualIncomeMin" : 0,
+	        "annualIncomeMax" : 0
+	    },
+	    "visibleProfile" : {},
+	    "parnicYoga" : {
+	        "arhaticLevel" : "",
+	        "isTrainer" : 0,
+	        "trainerLevel" : "",
+	        "healing" : [ 
+	            ""
+	        ],
+	        "spritual" : [ 
+	            ""
+	        ],
+	        "prosperity" : [ 
+	            ""
+	        ]
+	    },
+	     "profileImage" : ""
+	};
+	var userprofileSchem = new userProfile(createProfileSchema);
+
+	userprofileSchem.save(function(err, res){
+		if(err){
+			error.msg 		= statics.commonError.serverErr.displayMsg;
+			error.status 	= statics.commonError.serverErr.status;
+			error.code 		= statics.commonError.serverErr.code;
+			error.logId 	= logId;
+			error.err 		= err;
+
+			Log.error(componentName + subComp, logId, err);
+			return callb(error);
+		}
+
+		var LoginSchema = {
+			"username" 		: params.username,
+			"pass" 			: params.pass,
+			"loginToken" 	: String,
+			"createdOn" 	: new Date(),
+			"modifiedOn" 	: new Date(),
+			"isEnabled" 	: 1,
+			"profId"		: String
+		};
+
+		Log.info(componentName + subComp, logId, res);
+		return callb(null, res);
+
+	});
 	
 };
 
