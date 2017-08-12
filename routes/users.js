@@ -15,8 +15,14 @@ router.post('/login', respohandler.addLogToken, preValidate.userLoginValidate, u
 router.post('/logout', respohandler.addLogToken, preValidate.userLogoutValidate, userProcess.userLogout, auth.deleteAuthToken, respohandler.jsonResponse);
 
 /***************************** USER log registration/myProfile *********************************/
-
+//done
 router.post('/register', respohandler.addLogToken, preValidate.userRegisterValidate, userProcess.userRegister, respohandler.jsonResponse);
+
+//
+router.post('/checkEmail', respohandler.addLogToken, userProcess.checkEmail, respohandler.jsonResponse);
+
+//
+//router.post('/upload', respohandler.addLogToken, userProcess.upload, respohandler.jsonResponse);
 
 //doing
 router.post('/myProfile',respohandler.addLogToken, auth.validateAuthToken, userProcess.userProfile, respohandler.jsonResponse);

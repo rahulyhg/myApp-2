@@ -6,6 +6,7 @@ var Log = require("../../appUtil/logger");
 var statics = require("../../appUtil/appStatic");
 var debug = require("debug")("userControl");
 var userProfile = require("../../model/userProfileSchema");
+var utils = require("../../appUtil/commonUtil");
 
 //constants
 var userObj = {};
@@ -144,10 +145,10 @@ userObj.registration = function(params, callb){
 
 	};
 	var subComp = ".search";
-	var logId = params.registration;
+	var logId = params.logId;
 
 	var createProfileSchema = {
-	    "userid" : "",
+	    "userid" : "AM" + utils.uuid(4, "AN"),
 	    "profileStatus" : {
 	        "certificatedUploaded" : 0,
 	        "certificatedApproved" : 0,
@@ -168,7 +169,7 @@ userObj.registration = function(params, callb){
 	        "height" : "",
 	        "weight": "",
 	        "maritialStatus" : "",
-	        "languageknown" : [""],
+	        "languageknown" : [],
 	        "belongsToCountry" : params.country,
 	        "belongsToState" : "",
 	        "belongsToCity" : "",
@@ -222,7 +223,7 @@ userObj.registration = function(params, callb){
 	        "ownHouse" : 0,
 	        "ownCar" : 0,
 	        "cooking" : 0,
-	        "hobbies" : [""],
+	        "hobbies" : [],
 	        "about" : ""
 	    },
 	    "contact" : {
@@ -244,14 +245,11 @@ userObj.registration = function(params, callb){
 	        "arhaticLevel" : "",
 	        "isTrainer" : 0,
 	        "trainerLevel" : "",
-	        "healing" : [ 
-	            ""
+	        "healing" : [
 	        ],
 	        "spritual" : [ 
-	            ""
 	        ],
-	        "prosperity" : [ 
-	            ""
+	        "prosperity" : [
 	        ]
 	    },
 	     "profileImage" : ""
@@ -273,20 +271,41 @@ userObj.registration = function(params, callb){
 		var LoginSchema = {
 			"username" 		: params.username,
 			"pass" 			: params.pass,
-			"loginToken" 	: String,
+			"loginToken" 	: "",
 			"createdOn" 	: new Date(),
 			"modifiedOn" 	: new Date(),
 			"isEnabled" 	: 1,
-			"profId"		: String
+			"profId"		: res._id
 		};
 
-		Log.info(componentName + subComp, logId, res);
-		return callb(null, res);
+		var newUserSchema = new userSchema(LoginSchema);
+		newUserSchema.save(function(er, re){
 
+			if(er){
+				error.msg 		= statics.commonError.serverErr.displayMsg;
+				error.status 	= statics.commonError.serverErr.status;
+				error.code 		= statics.commonError.serverErr.code;
+				error.logId 	= logId;
+				error.err 		= err;
+
+				Log.error(componentName + subComp, logId, er);
+				return callb(error);
+			}
+
+			Log.info(componentName + subComp, logId, res);
+			return callb(null, re);
+
+		});
 	});
 	
 };
 
+/**
+ * [search description]
+ * @param  {[type]} params [description]
+ * @param  {[type]} callb  [description]
+ * @return {[type]}        [description]
+ */
 userObj.search = function(params, callb){
 	var error = {};
 	var query = {
@@ -362,6 +381,16 @@ userObj.getProfile = function(params, callb){
 		return callb(null, res);
 
 	});
+};
+
+/**
+ * [checkEmail description]
+ * @param  {[type]} params [description]
+ * @param  {[type]} callb  [description]
+ * @return {[type]}        [description]
+ */
+userObj.checkEmail = function(params, callb){
+
 };
 
 module.exports = userObj;

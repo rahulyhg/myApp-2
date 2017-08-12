@@ -56,7 +56,6 @@ serverLogger.write = function(body, id, callb){
 	    }
 	}, function (err) {
 		debug(err);
-	    console.trace(err.message);
 	});
 
 };

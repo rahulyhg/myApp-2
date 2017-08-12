@@ -162,4 +162,8 @@ api.userProfile = function(req, res, next){
 	}
 };
 
+api.checkEmail = function(req, res, next){
+
+};
+
 module.exports = api;
