@@ -5,7 +5,7 @@ var userProcess = require("./api/userApi");
 var userAction = require("./api/userAction");
 var preValidate = require("./common/validation");
 var auth = require("./common/auth");
-const fileUpload = require('express-fileupload');
+//var fileUpload = require('express-fileupload');
 
 
 /******************************** USER log in/out **********************************************/

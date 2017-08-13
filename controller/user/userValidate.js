@@ -95,7 +95,7 @@ var userProfileSchema = {
             "mobile"            : {"type": "string"}
         },
         "desiredPartner" : {
-            "horoscope"         : [{"type": "string"],
+            "horoscope"         : {"type": "string"},
             "vegiterian"        : {"type": "Number"},
             "smoke"             : {"type": "Number"},
             "drink"             : {"type": "Number"},
