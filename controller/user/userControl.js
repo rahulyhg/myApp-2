@@ -420,7 +420,7 @@ userObj.checkEmail = function(params, callb){
 
 userObj.updateProfile = function(params, callb){
 	var error = {};
-	var subComp = ".search";
+	var subComp = ".updateProfile";
 	var logId = params.logId;
 
 	var createProfileSchema = {
@@ -439,7 +439,9 @@ userObj.updateProfile = function(params, callb){
 	    "profileImage" : params.profileImage
 	};
 
-	userprofileSchem.update({"_id": params.profileID}, {"$set": createProfileSchema}, function(err, res){
+	Log.info(componentName + subComp, logId, createProfileSchema);
+
+	userSchema.update({"_id": params.profileID}, {"$set": createProfileSchema}, function(err, res){
 		if(err){
 			error.msg 		= statics.commonError.serverErr.displayMsg;
 			error.status 	= statics.commonError.serverErr.status;
@@ -452,7 +454,7 @@ userObj.updateProfile = function(params, callb){
 		}
 
 		Log.info(componentName + subComp, logId, res);
-		return callb(null, "success");
+		return callb(null, res);
 	});
 };
 

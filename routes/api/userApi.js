@@ -199,16 +199,17 @@ api.checkEmail = function(req, res, next){
 api.updateProfile = function(req, res, next){
 	var params = req.body;
 
-	LOG.info(componentName + ".updateProfile", req.body.logId, params);
-
-	if(req.body.username){
+	if(req.body){
 
 		userCtrl.updateProfile(params, function(err, result){
 
 			if(err){
+
+				LOG.error(componentName + ".updateProfile", req.body.logId, params);
 				req.body.respoJson = err;
 			}
 			else{
+				LOG.info(componentName + ".updateProfile", req.body.logId, params);
 				var jsonObj = statics.commonError.active;
 				var jsondata = {
 					status: jsonObj.status,
