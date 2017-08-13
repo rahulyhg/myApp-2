@@ -196,4 +196,37 @@ api.checkEmail = function(req, res, next){
 	}
 };
 
+api.updateProfile = function(req, res, next){
+	var params = req.body;
+
+	LOG.info(componentName + ".updateProfile", req.body.logId, params);
+
+	if(req.body.username){
+
+		userCtrl.updateProfile(params, function(err, result){
+
+			if(err){
+				req.body.respoJson = err;
+			}
+			else{
+				var jsonObj = statics.commonError.active;
+				var jsondata = {
+					status: jsonObj.status,
+					code: jsonObj.code,
+					displayMsg: jsonObj.displayMsg,
+					data: result
+				};
+
+				req.body.respoJson = jsondata;
+			}
+
+			next();
+		});
+
+	}else{
+		LOG.error(componentName + ".updateProfile", req.body.logId, params);
+		next();
+	}
+};
+
 module.exports = api;

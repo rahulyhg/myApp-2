@@ -5,6 +5,7 @@ var userProcess = require("./api/userApi");
 var userAction = require("./api/userAction");
 var preValidate = require("./common/validation");
 var auth = require("./common/auth");
+const fileUpload = require('express-fileupload');
 
 
 /******************************** USER log in/out **********************************************/
@@ -23,6 +24,9 @@ router.post('/checkEmail', respohandler.addLogToken, userProcess.checkEmail, res
 
 //
 //router.post('/upload', respohandler.addLogToken, userProcess.upload, respohandler.jsonResponse);
+
+//done
+router.post('/action/updateProfile', respohandler.addLogToken, preValidate.userProfileValidate, userProcess.updateProfile, respohandler.jsonResponse);
 
 //doing
 router.post('/myProfile',respohandler.addLogToken, auth.validateAuthToken, userProcess.userProfile, respohandler.jsonResponse);

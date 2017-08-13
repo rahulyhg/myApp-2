@@ -44,5 +44,17 @@ api.userRegisterValidate = function (req, res, next) {
 
 };
 
+api.userProfileValidate = function (req, res, next) {
+	var body = req.body;
+	userValidate.profileValidate(body, function(err, result){
+		if(err){
+			next(err);
+
+		}else{
+			next();
+		}
+	});
+};
+
 
 module.exports = api;

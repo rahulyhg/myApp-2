@@ -13,7 +13,7 @@ var loginSchema = {
 
 var userProfileSchema = {
 	"properties": {
-        "userid"                    : {"type": "string", "minLength":1},
+        "userid"      : {"type": "string", "minLength":1},
         "profileStatus" : {
             "certificatedUploaded"  : {"type": "Number"},
             "certificatedApproved"  : {"type": "Number"},
@@ -22,25 +22,28 @@ var userProfileSchema = {
             "loginToken"            : {"type": "string", "minLength":6}
         },
         "basic" : {
-            "firstName"         : {"type": "string", "minLength":1},
+            "firstName"         : {"type": "string"},
             "middleName"        : {"type": "string"},
-            "lastName"          : {"type": "string", "minLength":1},
-            "DOB"               : {"type": "string"}, //format
-            "TOB"               : {"type": "string"}, //format
+            "lastName"          : {"type": "string"},
+            "DOB"               : {"type": "string"},
+            "TOB"               : {"type": "string"},
             "complex"           : {"type": "string"},
             "disablity"         : {"type": "string"},
             "gender"            : {"type": "string"},
             "aboutMe"           : {"type": "string"},
-            "height"            : {"type": "Number"},
+            "height"            : {"type": "string"},
+            "weight"            : {"type": "string"},
             "maritialStatus"    : {"type": "string"},
-            "languageknown"     : [{"type": "string"}],
+            "languageknown"     : {"type": "Object"},
             "belongsToCountry"  : {"type": "string"},
             "belongsToState"    : {"type": "string"},
             "belongsToCity"     : {"type": "string"},
             "currentToCountry"  : {"type": "string"},
             "currentToState"    : {"type": "string"},
             "currentToCity"     : {"type": "string"},
-            "profileManagedBy"  : {"type": "string"}
+            "profileManagedBy"  : {"type": "string"},
+            "religion"          : {"type": "string"},
+            "cast"              : {"type": "string"},
         },
         "education" : {
             "hightestEdu"       : {"type": "string"},
@@ -73,22 +76,26 @@ var userProfileSchema = {
             "manglik"           : {"type": "string"}
         },
         "lifeStyle" : {
-            "vegiterian"        : {"type": "Number"},
+            "vegetarian"        : {"type": "Number"},
+            "NonVegetarian"     : {"type": "Number"},
+            "Egaetarian"        : {"type": "Number"},
             "smoke"             : {"type": "Number"},
+            "smokeOcc"          : {"type": "Number"},
             "drink"             : {"type": "Number"},
+            "drinkOcc"          : {"type": "Number"},
             "ownHouse"          : {"type": "Number"},
             "ownCar"            : {"type": "Number"},
             "cooking"           : {"type": "Number"},
-            "hobbies"           : [{"type": "string"}],
-            "about"             : {"type": "string", "minLength":10}
+            "hobbies"           : {"type": "Object"},
+            "about"             : {"type": "Number"},
         },
         "contact" : {
-            "email"             : {"type": "string", "format":"email"}, //format
+            "email"             : {"type": "string"}, //format
             "phone_no"          : {"type": "string"},
-            "mobile"            : {"type": "string", "minLength": 10}
+            "mobile"            : {"type": "string"}
         },
         "desiredPartner" : {
-            "horoscope"         : [{"type": "string"}],
+            "horoscope"         : [{"type": "string"],
             "vegiterian"        : {"type": "Number"},
             "smoke"             : {"type": "Number"},
             "drink"             : {"type": "Number"},
@@ -98,7 +105,16 @@ var userProfileSchema = {
         },
         "visibleProfile" : {
             "contact": {"type": "Boolean"}
-        }
+        }, 
+        "parnicYoga" : {
+            "arhaticLevel"      : {"type": "string"},
+            "isTrainer"         : {"type": "Number"},
+            "trainerLevel"      : {"type": "string"},
+            "healing"           : {"type": "Object"},
+            "spritual"          : {"type": "Object"},
+            "prosperity"        : {"type": "Object"}
+        },
+        "profileImage" : {"type": "string"}
     },
     "required": ["basic", "education"]
 };
@@ -185,8 +201,14 @@ userObj.registrationValidate = function(params, callb){
  * @param  {[type]} callb  [description]
  * @return {[type]}        [description]
  */
-userObj.getProfileValidate = function(params, callb){
+userObj.profileValidate = function(params, callb){
+    var validRes = v.validate(params, userProfileSchema).errors;
 
+    if(!validRes.length){
+        return callb();
+    }else{
+        return callb(validRes);
+    }
 };
 
 module.exports = userObj;

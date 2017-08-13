@@ -1,5 +1,5 @@
 var x = {
-    "userid"                    : {"type": "string", "minLength":1},
+    "userid"      : {"type": "string", "minLength":1},
     "profileStatus" : {
         "certificatedUploaded"  : {"type": "Number"},
         "certificatedApproved"  : {"type": "Number"},
@@ -8,25 +8,28 @@ var x = {
         "loginToken"            : {"type": "string", "minLength":6}
     },
     "basic" : {
-        "firstName"         : {"type": "string", "minLength":1}
+        "firstName"         : {"type": "string"},
         "middleName"        : {"type": "string"},
-        "lastName"          : {"type": "string", "minLength":1},
-        "DOB"               : {"type": "string"}, //format
-        "TOB"               : {"type": "string"}, //format
+        "lastName"          : {"type": "string"},
+        "DOB"               : {"type": "string"},
+        "TOB"               : {"type": "string"},
         "complex"           : {"type": "string"},
         "disablity"         : {"type": "string"},
         "gender"            : {"type": "string"},
         "aboutMe"           : {"type": "string"},
-        "height"            : {"type": "Number"},
+        "height"            : {"type": "string"},
+        "weight"            : {"type": "string"},
         "maritialStatus"    : {"type": "string"},
-        "languageknown"     : [{"type": "string"}],
+        "languageknown"     : {"type": "Object"},
         "belongsToCountry"  : {"type": "string"},
         "belongsToState"    : {"type": "string"},
         "belongsToCity"     : {"type": "string"},
         "currentToCountry"  : {"type": "string"},
         "currentToState"    : {"type": "string"},
         "currentToCity"     : {"type": "string"},
-        "profileManagedBy"  : {"type": "string"}
+        "profileManagedBy"  : {"type": "string"},
+        "religion"          : {"type": "string"},
+        "cast"              : {"type": "string"},
     },
     "education" : {
         "hightestEdu"       : {"type": "string"},
@@ -59,14 +62,18 @@ var x = {
         "manglik"           : {"type": "string"}
     },
     "lifeStyle" : {
-        "vegiterian"        : {"type": "Number"},
+        "vegetarian"        : {"type": "Number"},
+        "NonVegetarian"     : {"type": "Number"},
+        "Egaetarian"        : {"type": "Number"},
         "smoke"             : {"type": "Number"},
+        "smokeOcc"          : {"type": "Number"},
         "drink"             : {"type": "Number"},
+        "drinkOcc"          : {"type": "Number"},
         "ownHouse"          : {"type": "Number"},
         "ownCar"            : {"type": "Number"},
         "cooking"           : {"type": "Number"},
-        "hobbies"           : [{"type": "string"],
-        "about"             : {"type": "string", "minLength":10}
+        "hobbies"           : {"type": "Object"},
+        "about"             : {"type": "Number"},
     },
     "contact" : {
         "email"             : {"type": "string"}, //format
@@ -84,5 +91,14 @@ var x = {
     },
     "visibleProfile" : {
         "contact": {"type": "Boolean"}
-    }
+    }, 
+    "parnicYoga" : {
+        "arhaticLevel"      : {"type": "string"},
+        "isTrainer"         : {"type": "Number"},
+        "trainerLevel"      : {"type": "string"},
+        "healing"           : {"type": "Object"},
+        "spritual"          : {"type": "Object"},
+        "prosperity"        : {"type": "Object"}
+    },
+    "profileImage" : {"type": "string"}
 };
