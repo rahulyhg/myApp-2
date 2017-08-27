@@ -22,5 +22,6 @@
 	"settings":{
 		"isConsole": true,
 		"isElasticLogger": false
-	}
+	},
+	"sendgridKey": "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"
 }

@@ -6,5 +6,6 @@ module.exports = {
 	db : conf.db,
 	redis: conf.redis,
 	es: conf.es,
-	settings: conf.settings
+	settings: conf.settings,
+	sendgridKey: conf.sendgridKey
 };

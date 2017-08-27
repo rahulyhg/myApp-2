@@ -18,6 +18,11 @@ var commonError = {
 	deactivated: 	{code: 420, status: "failed", displayMsg: "your profile is deactivated, please contact admin"}
 };
 
+var emailTamplateKey = {
+	registerSuccess: "3127defd-541f-444a-a930-68d114f8a5a6",
+	verify: "3afe6771-f1bd-49c7-82b7-ef5aab44e87a"
+};
+
 var staticSms = {
 	successRegister: function(customerName, ID){
 		return "Dear " + customerName + ", your profile has been registered with Arhatic Matrimony as PofileID : " + ID;
@@ -30,3 +35,4 @@ var staticSms = {
 
 module.exports.commonError = commonError;
 module.exports.usrStatus = usrStatus;
+module.exports.emailTamplateKey = emailTamplateKey;

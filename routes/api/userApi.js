@@ -2,6 +2,7 @@
 
 var userCtrl = require("../../controller/user/userControl");
 var LOG = require("../../appUtil/logger");
+var common = require("../../appUtil/commonUtil");
 var statics = require('../../appUtil/appStatic');
 var componentName = "userApi";
 var api = {};
@@ -229,5 +230,39 @@ api.updateProfile = function(req, res, next){
 		next();
 	}
 };
+
+api.uploadPic = function(req, res, next){
+};
+
+api.uploadFile = function(req, res, next){
+};
+
+api.verifyEmail = function(req, res, next){
+	var token = req.query.token;
+	var logId = req.body.logId || ""
+
+	common.verifyJwtToken(token, function(err, resp){
+		
+		if(err){
+			LOG.error(componentName+ ".verifyEmail.verifyJwtToken", logId, err);
+				req.body.respoJson = err;
+			}
+			else{
+				LOG.info(componentName+ ".verifyEmail.verifyJwtToken", logId, resp);
+				var jsonObj = statics.commonError.active;
+				var jsondata = {
+					status: jsonObj.status,
+					code: jsonObj.code,
+					displayMsg: jsonObj.displayMsg,
+					data: resp.authToken
+				};
+
+				req.body.respoJson = jsondata;
+			}
+
+			next();
+	});
+};
+
 
 module.exports = api;

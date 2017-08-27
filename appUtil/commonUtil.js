@@ -1,5 +1,7 @@
 "use strict";
 var _ = require("lodash");
+var jwt = require('jsonwebtoken');
+var skey = "codedep";
 
 var utls = new Object();
 
@@ -73,13 +75,34 @@ utls.uuid = function(size, typen) {
     return uid;
 }
 
+utls.createJwtToken = function(params){
+    params.exp = Math.floor(Date.now() / 1000) + (60 * 60);
+    return jwt.sign(params, skey);
+}
+
+utls.verifyJwtToken = function(token, callb){
+    jwt.verify(token, skey, function(err, respo){
+
+        return callb(err, respo);
+
+    });
+
+    
+}
+
 module.exports = utls;
 
 // test cases
 (function(){
     if(require.main == module){
-     console.log(utls.uuid(64, "AN"));
+        //console.log(utls.uuid(64, "AN"));
       //console.log(utls.ipAddress());
+      
+        //console.log(utls.createJwtToken({h: "welcome"}));
+
+      // utls.verifyJwtToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJoIjoid2VsY29tZSIsImV4cCI6MTUwMzg2MzY4MSwiaWF0IjoxNTAzODYwMDgxfQ.s9sg7Nkn7IcqQrVs2QMTx1201H0BuNPouDlpO6gvd7o", function(err, respo){
+      //   console.log(err, respo);
+      // });
 
     }
 }());
