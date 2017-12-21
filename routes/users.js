@@ -1,11 +1,11 @@
-var express = require('express');
-var router = express.Router();
-var respohandler = require('./common/respoHandler');
-var userProcess = require("./api/userApi");
-var userAction = require("./api/userAction");
-var preValidate = require("./common/validation");
-var mailHandler = require("./common/mailHandler");
-var auth = require("./common/auth");
+var express 		= require('express');
+var router 			= express.Router();
+var respohandler 	= require('./common/respoHandler');
+var userProcess 	= require("./api/userApi");
+var userAction 		= require("./api/userAction");
+var preValidate 	= require("./common/validation");
+var mailHandler 	= require("./common/mailHandler");
+var auth 			= require("./common/auth");
 
 
 
