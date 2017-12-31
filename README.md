@@ -143,7 +143,8 @@ broadband
 ### REQUEST
 ```
 {
-    "loginToken": "1185530819216802Vjlfx5b7DCnI2aAJ"
+    "profId":"5951f56cac9568c0138efe71",
+    "loginToken":"2148854017231311YJ9sP31A9wQXY2Tw"
 }
 
 ```
@@ -152,113 +153,277 @@ broadband
 
 ```
 {
-    "data": [
-        {
-            "_id": "5951f56cac9568c0138efe71",
-            "userid": "",
-            "visibleProfile": {
-                "contact": true
-            },
-            "desiredPartner": {
-                "manglik": [],
-                "vegiterian": 1,
-                "smoke": 0,
-                "drink": 1,
-                "hroscoperMustMatch": 1,
-                "annualIncomeMin": 100000,
-                "annualIncomeMax": 500000,
-                "horoscope": []
-            },
-            "contact": {
-                "email": "",
-                "phone_no": "",
-                "mobile": ""
-            },
-            "lifeStyle": {
-                "vegiterian": 1,
-                "smoke": 0,
-                "drink": 1,
-                "ownHouse": 1,
-                "ownCar": 1,
-                "cooking": 1,
-                "about": "",
-                "hobbies": [
-                    "traveling",
-                    "sports"
-                ]
-            },
-            "horoscope": {
-                "mustMatch": 1,
-                "rashi": "",
-                "nakshatra": "",
-                "manglik": ""
-            },
-            "professional": {
-                "about": "",
-                "orgName": "",
-                "occupation": "",
-                "annualIncome": 1000000,
-                "orgType": ""
-            },
-            "family": {
-                "about": "",
-                "familyStatus": "",
-                "familyType": "",
-                "familyIncome": "",
-                "fatherOccupation": "",
-                "motherOccupation": "",
-                "brothers": 2,
-                "sisters": 4
-            },
-            "education": {
-                "hightestEdu": "",
-                "PG": "",
-                "PGCollege": "",
-                "UG": "",
-                "UGCollege": ""
-            },
-            "basic": {
-                "firstName": "mohit",
-                "middleName": "",
-                "lastName": "gupta",
-                "DOB": "13/11/1990",
-                "TOB": "8:00 PM",
-                "complex": "",
-                "disablity": "",
-                "gender": "Male",
-                "aboutMe": "",
-                "height": 1.8,
-                "maritialStatus": "",
-                "belongsToCountry": "",
-                "belongsToState": "",
-                "belongsToCity": "",
-                "currentToCountry": "",
-                "currentToState": "",
-                "currentToCity": "",
-                "profileManagedBy": "",
-                "languageknown": [
-                    "hindi",
-                    "english"
-                ]
-            },
-            "profileStatus": {
-                "certificatedUploaded": 1,
-                "certificatedApproved": 0,
-                "profileInSearch": 1,
-                "imagesApproved": 0,
-                "loginToken": ""
-            }
-        }
+  "data": [
+    {
+      "_id": "5951f56cac9568c0138efe71",
+      "userid": "",
+      "visibleProfile": {
+        "contact": true
+      },
+      "profileImage": "",
+      "parnicYoga": {
+        "arhaticLevel": "Preparatory level",
+        "isTrainer": 1,
+        "trainerLevel": "Basic",
+        "prosperity": [
+          "Kriyashakti"
+        ],
+        "spritual": [
+          "Arthatic Yoga",
+          "Inner Teachings of Hinduism Revealed"
+        ],
+        "healing": [
+          "Basic Pranic Healing"
+        ]
+      },
+      "desiredPartner": {
+        "manglik": [
+          "Non-manglik",
+          "manglik"
+        ],
+        "vegiterian": 1,
+        "smoke": 0,
+        "drink": 1,
+        "hroscoperMustMatch": 1,
+        "annualIncomeMin": 100000,
+        "annualIncomeMax": 500000,
+        "horoscope": [
+          
+        ]
+      },
+      "contact": {
+        "email": "guptamohit385@gmail.com",
+        "phone_no": "",
+        "mobile": "9958189530"
+      },
+      "lifeStyle": {
+        "vegetarian": 1,
+        "NonVegetarian": 1,
+        "Egaetarian": 1,
+        "smoke": 1,
+        "smokeOcc": 1,
+        "drink": 1,
+        "drinkOcc": 0,
+        "ownHouse": 1,
+        "ownCar": 1,
+        "cooking": 1,
+        "about": "fun loving",
+        "hobbies": [
+          "traveling",
+          "sports"
+        ]
+      },
+      "horoscope": {
+        "mustMatch": 1,
+        "rashi": "",
+        "nakshatra": "",
+        "manglik": "NON Manglic"
+      },
+      "professional": {
+        "about": "IT Professional",
+        "orgName": "Wipro",
+        "occupation": "Software Engineer",
+        "currency": "Rupee",
+        "annualIncome": "15 l.p.a - 20 l.p.a",
+        "orgType": "Private"
+      },
+      "family": {
+        "about": "simple fun loving",
+        "familyStatus": "Upper Middle Class",
+        "familyType": "Nuclear",
+        "familyValues": "Traditional",
+        "familyIncome": "10 LPA - 15 LPA",
+        "fatherOccupation": "BANK MANAGER",
+        "motherOccupation": "Home Maker",
+        "brothers": 2,
+        "sisters": 4
+      },
+      "education": {
+        "hightestEdu": "PG",
+        "PG": "MCA",
+        "PGCollege": "ABES",
+        "UG": "BCA",
+        "UGCollege": "AGRA College"
+      },
+      "basic": {
+        "firstName": "mohit",
+        "middleName": "",
+        "lastName": "gupta",
+        "DOB": "13/11/1990",
+        "TOB": "8:00 PM",
+        "complex": "Fair",
+        "disablity": "Normal",
+        "gender": "Male",
+        "aboutMe": "i am very smart",
+        "height": "1.8",
+        "weight": "68 kg",
+        "maritialStatus": "Never Married",
+        "belongsToCountry": "INDIA",
+        "belongsToState": "DELHI",
+        "belongsToCity": "DELHI",
+        "currentToCountry": "INDIA",
+        "currentToState": "KARNATAKA",
+        "currentToCity": "BANGALORE",
+        "profileManagedBy": "SELF",
+        "religion": "Hindu",
+        "cast": "Bania",
+        "languageknown": [
+          "Hindi",
+          "English"
+        ]
+      },
+      "profileStatus": {
+        "certificatedUploaded": 1,
+        "certificatedApproved": 0,
+        "profileInSearch": 1,
+        "imagesApproved": 0,
+        "loginToken": ""
+      }
+    }
+  ],
+  "status": "success",
+  "code": 200,
+  "displayMsg": "no msg to display",
+  "logId": "2591172331818089"
+}
+```
+
+# updateProfile
+
+## url -> http://codedep.in/users/action/updateProfile
+
+### REQUEST
+```
+{
+  "loginToken": "2148854017231311YJ9sP31A9wQXY2Tw",
+  "profileID": "5951f56cac9568c0138efe71",
+  "userid": "",
+  "profileImage": "",
+  "parnicYoga": {
+    "arhaticLevel": "Preparatory level",
+    "isTrainer": 1,
+    "trainerLevel": "",
+    "prosperity": [
+      
     ],
-    "status": "success",
-    "code": 200,
-    "displayMsg": "no msg to display",
-    "logId": "2057192191637906"
+    "spritual": [
+      
+    ],
+    "healing": [
+      
+    ]
+  },
+  "desiredPartner": {
+    "vegiterian": 0,
+    "smoke": 0,
+    "drink": 0,
+    "hroscoperMustMatch": 0,
+    "annualIncomeMin": 0,
+    "annualIncomeMax": 0,
+    "horoscope": [
+      ""
+    ]
+  },
+  "contact": {
+    "email": "test@test1.com",
+    "phone_no": "",
+    "mobile": "9999999999"
+  },
+  "lifeStyle": {
+    "vegetarian": 0,
+    "NonVegetarian": 0,
+    "Egaetarian": 0,
+    "smoke": 0,
+    "smokeOcc": 0,
+    "drink": 0,
+    "drinkOcc": 0,
+    "ownHouse": 0,
+    "ownCar": 0,
+    "cooking": 0,
+    "about": "",
+    "hobbies": [
+      
+    ]
+  },
+  "horoscope": {
+    "mustMatch": 0,
+    "rashi": "",
+    "nakshatra": "",
+    "manglik": ""
+  },
+  "professional": {
+    "about": "",
+    "orgName": "",
+    "occupation": "",
+    "currency": "",
+    "annualIncome": "",
+    "orgType": ""
+  },
+  "family": {
+    "about": "",
+    "familyStatus": "",
+    "familyType": "",
+    "familyValues": "",
+    "familyIncome": "",
+    "fatherOccupation": "",
+    "motherOccupation": "",
+    "brothers": 0,
+    "sisters": 0
+  },
+  "education": {
+    "hightestEdu": "",
+    "PG": "",
+    "PGCollege": "",
+    "UG": "",
+    "UGCollege": ""
+  },
+  "basic": {
+    "firstName": "best",
+    "middleName": "",
+    "lastName": "",
+    "DOB": "13/11/1990",
+    "TOB": "",
+    "complex": "",
+    "disablity": "",
+    "gender": "male",
+    "aboutMe": "",
+    "height": "",
+    "weight": "",
+    "maritialStatus": "",
+    "belongsToCountry": "INDIA",
+    "belongsToState": "",
+    "belongsToCity": "",
+    "currentToCountry": "",
+    "currentToState": "",
+    "currentToCity": "",
+    "profileManagedBy": "",
+    "religion": "",
+    "cast": "",
+    "languageknown": [
+      
+    ]
+  },
+  "profileStatus": {
+    "certificatedUploaded": 0,
+    "certificatedApproved": 0,
+    "profileInSearch": 0,
+    "imagesApproved": 0,
+    "loginToken": ""
+  }
 }
 
 ```
 
+### SUCCESSFUL RESPONSE - 200 OK
 
+```
+{
+    "status": "success",
+    "code": 200,
+    "displayMsg": "no msg to display",
+    "logId": "0474103097928710"
+}
+```
 
 # cities 
 
