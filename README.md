@@ -11,6 +11,8 @@ The list of API's are give below to start working with
 browser
 broadband
 
+## docker:
+
 # Login 
 
 ## url -> http://codedep.in/users/login
@@ -153,138 +155,137 @@ broadband
 
 ```
 {
-  "data": [
-    {
-      "_id": "5951f56cac9568c0138efe71",
-      "userid": "",
-      "visibleProfile": {
-        "contact": true
-      },
-      "profileImage": "",
-      "parnicYoga": {
-        "arhaticLevel": "Preparatory level",
-        "isTrainer": 1,
-        "trainerLevel": "Basic",
-        "prosperity": [
-          "Kriyashakti"
-        ],
-        "spritual": [
-          "Arthatic Yoga",
-          "Inner Teachings of Hinduism Revealed"
-        ],
-        "healing": [
-          "Basic Pranic Healing"
-        ]
-      },
-      "desiredPartner": {
-        "manglik": [
-          "Non-manglik",
-          "manglik"
-        ],
-        "vegiterian": 1,
-        "smoke": 0,
-        "drink": 1,
-        "hroscoperMustMatch": 1,
-        "annualIncomeMin": 100000,
-        "annualIncomeMax": 500000,
-        "horoscope": [
-          
-        ]
-      },
-      "contact": {
-        "email": "guptamohit385@gmail.com",
-        "phone_no": "",
-        "mobile": "9958189530"
-      },
-      "lifeStyle": {
-        "vegetarian": 1,
-        "NonVegetarian": 1,
-        "Egaetarian": 1,
-        "smoke": 1,
-        "smokeOcc": 1,
-        "drink": 1,
-        "drinkOcc": 0,
-        "ownHouse": 1,
-        "ownCar": 1,
-        "cooking": 1,
-        "about": "fun loving",
-        "hobbies": [
-          "traveling",
-          "sports"
-        ]
-      },
-      "horoscope": {
-        "mustMatch": 1,
-        "rashi": "",
-        "nakshatra": "",
-        "manglik": "NON Manglic"
-      },
-      "professional": {
-        "about": "IT Professional",
-        "orgName": "Wipro",
-        "occupation": "Software Engineer",
-        "currency": "Rupee",
-        "annualIncome": "15 l.p.a - 20 l.p.a",
-        "orgType": "Private"
-      },
-      "family": {
-        "about": "simple fun loving",
-        "familyStatus": "Upper Middle Class",
-        "familyType": "Nuclear",
-        "familyValues": "Traditional",
-        "familyIncome": "10 LPA - 15 LPA",
-        "fatherOccupation": "BANK MANAGER",
-        "motherOccupation": "Home Maker",
-        "brothers": 2,
-        "sisters": 4
-      },
-      "education": {
-        "hightestEdu": "PG",
-        "PG": "MCA",
-        "PGCollege": "ABES",
-        "UG": "BCA",
-        "UGCollege": "AGRA College"
-      },
-      "basic": {
-        "firstName": "mohit",
-        "middleName": "",
-        "lastName": "gupta",
-        "DOB": "13/11/1990",
-        "TOB": "8:00 PM",
-        "complex": "Fair",
-        "disablity": "Normal",
-        "gender": "Male",
-        "aboutMe": "i am very smart",
-        "height": "1.8",
-        "weight": "68 kg",
-        "maritialStatus": "Never Married",
-        "belongsToCountry": "INDIA",
-        "belongsToState": "DELHI",
-        "belongsToCity": "DELHI",
-        "currentToCountry": "INDIA",
-        "currentToState": "KARNATAKA",
-        "currentToCity": "BANGALORE",
-        "profileManagedBy": "SELF",
-        "religion": "Hindu",
-        "cast": "Bania",
-        "languageknown": [
-          "Hindi",
-          "English"
-        ]
-      },
-      "profileStatus": {
-        "certificatedUploaded": 1,
-        "certificatedApproved": 0,
-        "profileInSearch": 1,
-        "imagesApproved": 0,
-        "loginToken": ""
-      }
-    }
-  ],
-  "status": "success",
-  "code": 200,
-  "displayMsg": "no msg to display",
-  "logId": "2591172331818089"
+    "data": [
+        {
+            "profileStatus": {
+                "loginToken": "",
+                "imagesApproved": 0,
+                "profileInSearch": 1,
+                "certificatedApproved": 0,
+                "certificatedUploaded": 1
+            },
+            "basic": {
+                "languageknown": [
+                    "Hindi",
+                    "English"
+                ],
+                "cast": "Bania",
+                "religion": "Hindu",
+                "profileManagedBy": "SELF",
+                "currentToCity": "BANGALORE",
+                "currentToState": "KARNATAKA",
+                "currentToCountry": "INDIA",
+                "belongsToCity": "DELHI",
+                "belongsToState": "DELHI",
+                "belongsToCountry": "INDIA",
+                "maritialStatus": "Never Married",
+                "weight": "68 kg",
+                "height": "1.8",
+                "aboutMe": "i am very smart",
+                "gender": "Male",
+                "disablity": "Normal",
+                "complex": "Fair",
+                "TOB": "8:00 PM",
+                "DOB": "13/11/1990",
+                "lastName": "gupta",
+                "middleName": "",
+                "firstName": "mohit"
+            },
+            "education": {
+                "UGCollege": "AGRA College",
+                "UG": "BCA",
+                "PGCollege": "ABES",
+                "PG": "MCA",
+                "hightestEdu": "PG"
+            },
+            "family": {
+                "sisters": 4,
+                "brothers": 2,
+                "motherOccupation": "Home Maker",
+                "fatherOccupation": "BANK MANAGER",
+                "familyIncome": "10 LPA - 15 LPA",
+                "familyValues": "Traditional",
+                "familyType": "Nuclear",
+                "familyStatus": "Upper Middle Class",
+                "about": "simple fun loving"
+            },
+            "professional": {
+                "orgType": "Private",
+                "annualIncome": "15 l.p.a - 20 l.p.a",
+                "currency": "Rupee",
+                "occupation": "Software Engineer",
+                "orgName": "Wipro",
+                "about": "IT Professional"
+            },
+            "horoscope": {
+                "manglik": "NON Manglic",
+                "nakshatra": "",
+                "rashi": "",
+                "mustMatch": 1
+            },
+            "lifeStyle": {
+                "hobbies": [
+                    "traveling",
+                    "sports"
+                ],
+                "about": "fun loving",
+                "cooking": 1,
+                "ownCar": 1,
+                "ownHouse": 1,
+                "drinkOcc": 0,
+                "drink": 1,
+                "smokeOcc": 1,
+                "smoke": 1,
+                "Egaetarian": 1,
+                "NonVegetarian": 1,
+                "vegetarian": 1
+            },
+            "contact": {
+                "mobile": "9958189530",
+                "phone_no": "",
+                "email": "guptamohit385@gmail.com"
+            },
+            "desiredPartner": {
+                "horoscope": [],
+                "annualIncomeMax": 500000,
+                "annualIncomeMin": 100000,
+                "hroscoperMustMatch": 1,
+                "drink": 1,
+                "smoke": 0,
+                "vegiterian": 1,
+                "manglik": [
+                    "Non-manglik",
+                    "manglik"
+                ]
+            },
+            "parnicYoga": {
+                "healing": [
+                    "Basic Pranic Healing"
+                ],
+                "spritual": [
+                    "Arthatic Yoga",
+                    "Inner Teachings of Hinduism Revealed"
+                ],
+                "prosperity": [
+                    "Kriyashakti"
+                ],
+                "trainerLevel": "Basic",
+                "isTrainer": 1,
+                "arhaticLevel": "Preparatory level"
+            },
+            "profileImage": "",
+            "visibleProfile": {
+                "contact": true
+            },
+            "userid": "",
+            "_id": "5951f56cac9568c0138efe71",
+            "age": "27"
+        }
+    ],
+    "status": "success",
+    "code": 200,
+    "displayMsg": "no msg to display",
+    "logId": "7813103001344623"
 }
 ```
 

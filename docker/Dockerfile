@@ -25,4 +25,4 @@ RUN apt-get update && \
  RUN cd /src; npm install
 
  # Define the command to run the app using CMD which defines your runtime, i.e. node, and the path to our app, i.e. src/index.js
-CMD ["sh", "-c", "NODE_ENV=qa node /src/server.js"]
+CMD ["sh", "-c", "NODE_ENV=qa npm start"]

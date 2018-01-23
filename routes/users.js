@@ -7,8 +7,6 @@ var preValidate 	= require("./common/validation");
 var mailHandler 	= require("./common/mailHandler");
 var auth 			= require("./common/auth");
 
-
-
 /******************************** USER log in/out **********************************************/
 //done
 router.post('/login', respohandler.addLogToken, preValidate.userLoginValidate, userProcess.userLogin, auth.createAuthToken, respohandler.jsonResponse);
@@ -31,13 +29,14 @@ router.post('/uploadPic', respohandler.addLogToken, userProcess.uploadPic, respo
 
 router.get('/verifyEmail', respohandler.addLogToken, userProcess.verifyEmail, respohandler.jsonResponse);
 
-//done
+//done (5) recheck)
 router.post('/action/updateProfile', respohandler.addLogToken, preValidate.userProfileValidate, userProcess.updateProfile, respohandler.jsonResponse);
 
 //doing
 router.post('/myProfile',respohandler.addLogToken, auth.validateAuthToken, userProcess.userProfile, respohandler.jsonResponse);
 
 /******************************** USER ACTION ******************************/
+// 4) search for enabled user only (no db changes)
 router.post('/action/search', respohandler.addLogToken, auth.validateAuthToken, userAction.search, respohandler.jsonResponse);
 
 router.post('/action/interest', respohandler.addLogToken, respohandler.priTokenValidate, userAction.sendInterest, respohandler.jsonResponse);
