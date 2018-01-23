@@ -22,11 +22,37 @@ api.search = function(req, res, next){
 			}
 			else{
 				var jsonObj = statics.commonError.active;
+
+				var presult = [];
+
+				result.forEach(function(r) {
+
+					const allData = {};
+
+					allData.profileStatus 	= r.profileStatus;
+					allData.basic 			= r.basic;
+					allData.education 		= r.education;
+					allData.family 			= r.family;
+					allData.professional 	= r.professional;
+					allData.horoscope 		= r.horoscope;
+					allData.lifeStyle 		= r.lifeStyle;
+					allData.contact 		= r.contact;
+					allData.desiredPartner 	= r.desiredPartner;
+					allData.parnicYoga 		= r.parnicYoga;
+					allData.profileImage 	= r.profileImage;
+					allData.visibleProfile 	= r.visibleProfile;
+					allData.userid 			= r.userid;
+					allData._id 			= r._id;
+					allData.age 			= calculateAge(r.basic.DOB);
+
+					presult.push(allData);
+				});
+
 				var jsondata = {
 					status: jsonObj.status,
 					code: jsonObj.code,
 					displayMsg: jsonObj.displayMsg,
-					data: result
+					data: presult
 				};
 				
 				LOG.info(componentName + ".search", req.body.logId, params);
@@ -54,5 +80,14 @@ api.viewProfile = function (req, res, next) {
 	//userCtrl
 };
 
+
+function calculateAge(dob){
+    var currentdate = new Date();
+    var dateTime = new Date(dob.split('/')[2], dob.split('/')[1], dob.split('/')[0]);
+
+    var timeDiff = Math.abs(currentdate.getTime() - dateTime.getTime());
+    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return (diffDays / 365).toString().split(".")[0];
+}
 
 module.exports = api;
