@@ -4,7 +4,7 @@
 var userSchema = require("../../model/userSchema");
 var Log = require("../../appUtil/logger");
 var statics = require("../../appUtil/appStatic");
-var debug = require("debug")("userControl");
+var debug = require("debug")("userControl"); 	
 var userProfile = require("../../model/userProfileSchema");
 var utils = require("../../appUtil/commonUtil");
 
@@ -439,9 +439,9 @@ userObj.updateProfile = function(params, callb){
 	    "profileImage" : params.profileImage
 	};
 
-	Log.info(componentName + subComp, logId, createProfileSchema);
-
-	userSchema.update({"_id": params.profileID}, {"$set": createProfileSchema}, function(err, res){
+	Log.info(componentName + subComp, logId, {id : params.profileID});
+	
+	userProfile.update({"_id": params.profileID}, {"$set": createProfileSchema}, function(err, res){
 		if(err){
 			error.msg 		= statics.commonError.serverErr.displayMsg;
 			error.status 	= statics.commonError.serverErr.status;
@@ -456,7 +456,7 @@ userObj.updateProfile = function(params, callb){
 		Log.info(componentName + subComp, logId, res);
 		return callb(null, res);
 	});
-};
+ };
 
 module.exports = userObj;
 
