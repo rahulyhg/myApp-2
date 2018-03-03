@@ -1,11 +1,11 @@
 "use strict";
 
-var userCtrl = require("../../controller/user/userControl");
-var LOG = require("../../appUtil/logger");
-var common = require("../../appUtil/commonUtil");
-var statics = require('../../appUtil/appStatic');
-var componentName = "userApi";
-var api = {};
+const adminCtrl = require("../../controller/admin/adminControl");
+const LOG = require("../../appUtil/logger");
+const common = require("../../appUtil/commonUtil");
+const statics = require('../../appUtil/appStatic');
+const componentName = "userApi";
+const api = {};
 
 /**
  * [userLogin description]
@@ -14,27 +14,25 @@ var api = {};
  * @param  {Function} next [description]
  * @return {[type]}        [description]
  */
-api.userLogin = function (req, res, next) {
-	var params = {
+api.adminLogin = (req, res, next) => {
+	const params = {
 			username: req.body.username || "",
 			pass: req.body.pass || "",
 			logId: req.body.logId || ""
 		};
-	LOG.info(componentName + ".userLogin", req.body.logId, params);
+	LOG.info(componentName + ".adminLogin", req.body.logId, params);
 
 	if(req.body.username && req.body.pass && req.body.logId){
 
-		userCtrl.login(params, function(err, result){
-
-			if(err){
+		adminCtrl.login(params, function(err, result){
+			if (err) {
 				req.body.respoJson = err;
-			}
-			else{
-				var jsonObj = statics.commonError.active;
-				var jsondata = {
-					status: jsonObj.status,
-					code: jsonObj.code,
-					displayMsg: jsonObj.displayMsg,
+			}	else {
+				const {status, code, displayMsg} = statics.commonError.active;
+				const jsondata = {
+					status,
+					code,
+					displayMsg,
 					data: result
 				};
 
@@ -44,121 +42,85 @@ api.userLogin = function (req, res, next) {
 			next();
 		});
 
-	}else{
-		LOG.error(componentName + ".userLogin", req.body.logId, params);
+	} else {
+		LOG.error(componentName + ".adminLogin", req.body.logId, params);
 		next();
 	}
 };
 
-api.userRegister = function (req, res, next) {
-	var params = {
-			"name"          : req.body.name || "",
-		    "username"      : req.body.username || "",
-		    "pass"          : req.body.pass || "",
-		    "gender"        : req.body.gender || "",
-		    "dob"           : req.body.dob || "",
-		    "mothertounge"  : req.body.mothertounge || "",
-		    "mobile"        : req.body.mobile || "",
-		    "country"       : req.body.country || "",
-			logId: req.body.logId || ""
-		};
-	LOG.info(componentName + ".userRegister", req.body.logId, params);
+/**
+ * Request to register new admin user
+ * 
+ * @param {object} req - HTTP request object
+ * @param {object} res - HTTP response object
+ * @param {function} next - middleware function
+ * @return {function}
+ */
+api.adminRegister = function (req, res, next) {
+	const {username = '', pass = '', role = '', logId = ''} = req.body;
+	const params = {username, pass, role, logId};
 
-	if(req.body.username && req.body.pass && req.body.logId){
-
-		userCtrl.registration(params, function(err, result){
-
-			if(err){
+	LOG.info(componentName + ".adminRegister", logId, params);
+	
+	if (username && pass && logId) {
+		adminCtrl.createNewAdmin(params, function(err, result){
+			if (err) {
 				req.body.respoJson = err;
-			}
-			else{
-				var jsonObj = statics.commonError.active;
-				var jsondata = {
-					status: jsonObj.status,
-					code: jsonObj.code,
-					displayMsg: jsonObj.displayMsg,
+			} else {
+				const {status, code, displayMsg} = statics.commonError.active;
+				const jsondata = {
+					status,
+					code,
+					displayMsg,
 					data: result
 				};
-
 				req.body.respoJson = jsondata;
 			}
-
 			next();
 		});
 
-	}else{
-		LOG.error(componentName + ".userRegister", req.body.logId, params);
+	} else {
+		LOG.error(componentName + ".adminRegister", req.body.logId, params);
 		next();
 	}
 };
 
-api.userLogout = function(req, res, next){
-	var params = {
+/**
+ * Request to log out admin user
+ * 
+ * @param {object} req - HTTP request object
+ * @param {object} res - HTTP response object
+ * @param {function} next - middleware function
+ * @return {function}
+ */
+api.adminLogout = function(req, res, next){
+	const params = {
 		username: req.body.username || "",
 		loginToken: req.body.loginToken || "",
 		logId: req.body.logId || ""
 	};
-	LOG.info(componentName + ".userLogout", req.body.logId, params);
+
+	LOG.info(componentName + ".adminLogout", req.body.logId, params);
 
 	if(req.body.username && req.body.loginToken && req.body.logId){
 
-		userCtrl.logout(params, function(err, result){
-
-			if(err){
+		adminCtrl.logout(params, function(err, result){
+			if (err) {
 				req.body.respoJson = err;
-			}
-			else{
-				var jsonObj = statics.commonError.active;
-				var jsondata = {
-					status: jsonObj.status,
-					code: jsonObj.code,
-					displayMsg: jsonObj.displayMsg,
+			} else {
+				const {status, code, displayMsg} = statics.commonError.active;
+				const jsondata = {
+					status,
+					code,
+					displayMsg,
 					data: result
 				};
-
 				req.body.respoJson = jsondata;
 			}
-
 			next();
 		});
-
-	}else{
+	} else {
 		LOG.error(componentName + ".userLogout", req.body.logId, params);
-		next();
-	}
-};
-
-api.userProfile = function(req, res, next){
-	var params = {
-		profId: req.body.profId || "",
-		logId: req.body.logId || ""
-	};
-	LOG.info(componentName + ".userProfile", req.body.logId, params);
-
-	if(req.body.loginToken && req.body.logId){
-
-		userCtrl.getProfile(params, function(err, result){
-
-			if(err){
-				req.body.respoJson = err;
-			}
-			else{
-				var jsonObj = statics.commonError.active;
-				var jsondata = {
-					status: jsonObj.status,
-					code: jsonObj.code,
-					displayMsg: jsonObj.displayMsg,
-					data: result
-				};
-
-				req.body.respoJson = jsondata;
-			}
-
-			next();
-		});
-
-	}else{
-		LOG.error(componentName + ".userProfile", req.body.logId, params);
 		next();
 	}
 };
