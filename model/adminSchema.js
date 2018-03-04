@@ -3,12 +3,14 @@
 var conn = require('../conn/dbconn');
 
 var adminSchema = new conn.Schema({
-	"username" : String,
-	"pass" : String,
-	"roles": {type: String, enum: ['Admin', 'Sub-Admin']}
+	username: {type: String, unique: true},
+  pass : String,
+  firstname: String,
+  lastname: String,
+	role: {type: String, enum: ['Admin', 'Sub-Admin'], default: 'Sub-Admin'}
 });
 
-var adminLogins = conn.db.model('adminTab', adminSchema);
+var adminLogins = conn.db.model('adminsSchema', adminSchema);
 
 module.exports = adminLogins;
 

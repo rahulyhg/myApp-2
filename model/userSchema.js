@@ -3,13 +3,16 @@
 var conn = require('../conn/dbconn');
 
 var userLoginsSchema = new conn.Schema({
-	"username" : String,
+	"username" : {type:String},
+	// TODO - It needs to be unique
+	// "username" : {type:String, unique: true},
 	"pass" : String,
 	"loginToken" : String,
 	"createdOn" : String,
 	"modifiedOn" : String,
 	"isEnabled" : Number,
-	"profId": String
+	"profId": String,
+	"role": {type: String, enum: ['User', 'Admin', 'Sub-Admin'], default: 'User'}
 });
 
 var userLogins = conn.db.model('userlogins', userLoginsSchema);

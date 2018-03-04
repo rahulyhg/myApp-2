@@ -1,43 +1,46 @@
 var express 		= require('express');
 var respohandler 	= require('./common/respoHandler');
 var preValidate 	= require("./common/validation");
-var preValidate 	= require("./common/validation");
+var adminProcess = require("./api/adminApi");
 var auth 	    	= require("./common/auth");
 var mailHandler 	= require("./common/mailHandler");
 var router 			= express.Router();
 
+// TODO - Modify user schema to have role
+// Add admin APIs
+
 /******************************** USER log in/out **********************************************/
 //done
-router.post('/admin/login', respohandler.addLogToken, preValidate.userLoginValidate, 
-										adminProcess.userLogin, respohandler.jsonResponse);
+router.post('/login', respohandler.addLogToken, preValidate.adminLoginValidate, 
+										adminProcess.adminLogin, auth.createAuthToken, respohandler.jsonResponse);
 
 //done
-router.post('/admin/logout', respohandler.addLogToken, preValidate.userLogoutValidate, 
-										adminProcess.userLogout, respohandler.jsonResponse);
-
-//not done-
-// router.post('/admin/addnew', respohandler.addLogToken, preValidate.userRegisterValidate, 
-// 										userProcess.userRegister, respohandler.jsonResponse);
+router.post('/logout', respohandler.addLogToken, preValidate.adminLogoutValidate, 
+										adminProcess.adminLogout, auth.deleteAuthToken, respohandler.jsonResponse);
 
 //done
-router.post('/admin/getNewUsers', respohandler.addLogToken, preValidate.userRegisterValidate, 
-										adminProcess.userRegister, respohandler.jsonResponse);
+router.post('/addnew', respohandler.addLogToken, preValidate.adminRegisterValidate, 
+										adminProcess.adminRegister , respohandler.jsonResponse);
+
+//done
+// router.post('/getNewUsers', respohandler.addLogToken, preValidate.userRegisterValidate, 
+// 										adminProcess.userRegister, respohandler.jsonResponse);
 
 //working
-router.post('/admin/getUpdateInfoUsers', respohandler.addLogToken, preValidate.userRegisterValidate, 
-										adminProcess.userRegister, respohandler.jsonResponse);
+// router.post('/getUpdateInfoUsers', respohandler.addLogToken, preValidate.userRegisterValidate, 
+// 										adminProcess.userRegister, respohandler.jsonResponse);
 
 //done
-router.post('/admin/acceptDeclineUser', respohandler.addLogToken, preValidate.userRegisterValidate, 
-										adminProcess.userRegister, respohandler.jsonResponse);
+// router.post('/acceptDeclineUser', respohandler.addLogToken, preValidate.userRegisterValidate, 
+// 										adminProcess.userRegister, respohandler.jsonResponse);
 
 //done
-router.post('/admin/acceptDeclineUpdate', respohandler.addLogToken, preValidate.userRegisterValidate, 
-										adminProcess.userRegister, respohandler.jsonResponse);
+// router.post('/acceptDeclineUpdate', respohandler.addLogToken, preValidate.userRegisterValidate, 
+// 										adminProcess.userRegister, respohandler.jsonResponse);
 
 //done
-router.post('/admin/blockUser', respohandler.addLogToken, preValidate.userRegisterValidate, 
-										adminProcess.userRegister, respohandler.jsonResponse);
+// router.post('/blockUser', respohandler.addLogToken, preValidate.userRegisterValidate, 
+// 										adminProcess.userRegister, respohandler.jsonResponse);
 
 
 // 1) accept user 

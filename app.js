@@ -8,6 +8,7 @@ var utils = require("./appUtil/commonUtil");
 process.env.NODE_ENV = process.env.NODE_ENV || "dev";
 
 var users = require('./routes/users');
+var admins = require('./routes/admin');
 var index = require('./routes/index');
 
 
@@ -33,6 +34,7 @@ app.use(function(req, res, next) {
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/admin', admins);
 
 
 // catch 404 and forward to error handler
