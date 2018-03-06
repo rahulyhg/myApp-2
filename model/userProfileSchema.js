@@ -10,6 +10,7 @@ var userProfileSchema = new conn.Schema(
         "certificatedApproved" : Number,
         "profileInSearch" : Number,
         "imagesApproved" : Number,
+        'isBlocked': {type: Boolean, default: false}, 
         "loginToken" : String
     },
     "basic" : {

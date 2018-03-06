@@ -7,7 +7,6 @@ var usrStatus = {
 };
 
 var commonError = {
-
 	success: 		{code: 200, status: "success", displayMsg: "success transaction"},
 	unAuthenticate: {code: 400, status: "failed", displayMsg: "Not Authenticate user"},
 	noResultFound: 	{code: 401, status: "failed", displayMsg: "No Result/Match Found"},
@@ -15,7 +14,9 @@ var commonError = {
 	failed: 		{code: 500, status: "failed", displayMsg: "failed transaction"},
 	inactive: 		{code: 410, status: "failed", displayMsg: "your profile is under review, please contact admin"},
 	active: 		{code: 200, status: "success", displayMsg: "successfull"},
-	deactivated: 	{code: 420, status: "failed", displayMsg: "your profile is deactivated, please contact admin"}
+	deactivated: 	{code: 420, status: "failed", displayMsg: "your profile is deactivated, please contact admin"},
+	unAuthorisedUser: {code: 401, status: "failed", displayMsg: "Action not permissible for user role."},
+	updateFailed: {code: 400, status: "failed", displayMsg: "Update action failed."}
 };
 
 var emailTamplateKey = {

@@ -6,90 +6,91 @@ var adminValidate = require("../../controller/admin/adminValidate");
 var api = {};
 
 api.userLoginValidate = function (req, res, next) {
-	var body = req.body;
-	userValidate.loginValidate(body, function(err, result){
-		if(err){
-			next(err);
+		var body = req.body;
+		userValidate.loginValidate(body, function (err, result) {
+				if (err) {
+						next(err);
 
-		}else{
-			next();
-		}
-	});
-	
+				} else {
+						next();
+				}
+		});
+
 };
 
 api.userLogoutValidate = function (req, res, next) {
-	var body = req.body;
-	userValidate.logoutValidate(body, function(err, result){
-		if(err){
-			next(err);
+		var body = req.body;
+		userValidate.logoutValidate(body, function (err, result) {
+				if (err) {
+						next(err);
 
-		}else{
-			next();
-		}
-	});
-	
+				} else {
+						next();
+				}
+		});
+
 };
 
 api.userRegisterValidate = function (req, res, next) {
-	var body = req.body;
-	userValidate.registrationValidate(body, function(err, result){
-		if(err){
-			next(err);
+		var body = req.body;
+		userValidate.registrationValidate(body, function (err, result) {
+				if (err) {
+						next(err);
 
-		}else{
-			next();
-		}
-	});
+				} else {
+						next();
+				}
+		});
 
 };
 
 api.userProfileValidate = function (req, res, next) {
-	var body = req.body;
-	userValidate.profileValidate(body, function(err, result){
-		if(err){
-			next(err);
+		var body = req.body;
+		userValidate.profileValidate(body, function (err, result) {
+				if (err) {
+						next(err);
 
-		}else{
-			next();
-		}
-	});
+				} else {
+						next();
+				}
+		});
 };
 
 // Admin request validations
-api.adminRegisterValidate = function (req, res, next) {
+api.adminRegisterValidate = (req, res, next) => {
+		const {body} = req;
 
-	var body = req.body;
-	adminValidate.registrationValidate(body, function(err, result){
-		if (err) {
-			next(err);
-		} else {
-			next();
-		}
-	});
+		adminValidate.registrationValidate(body, (err, result) => {
+				if (err) {
+						next(err);
+				} else {
+						next();
+				}
+		});
 }
 
-api.adminLoginValidate = function (req, res, next) {
-	var body = req.body;
+api.adminLoginValidate = (req, res, next) => {
+		const {body} = req;
 
-	adminValidate.loginValidate(body, function(err, result){
-		if (err) {
-			next(err);
-		} else {
-			next();
-		}
-	});
+		adminValidate.loginValidate(body, (err, result) => {
+				if (err) {
+						next(err);
+				} else {
+						next();
+				}
+		});
 }
 
-api.adminLogoutValidate = function (req, res, next) {
-	var body = req.body;
-	adminValidate.logoutValidate(body, function(err, result){
-		if (err) {
-			next(err);
-		} else {
-			next();
-		}
-	});
+api.adminLogoutValidate = (req, res, next) => {
+		const {body} = req;
+
+		adminValidate.logoutValidate(body, (err, result) => {
+				if (err) {
+						next(err);
+				} else {
+						next();
+				}
+		});
 }
 
 module.exports = api;

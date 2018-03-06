@@ -33,6 +33,14 @@ var logoutSchema = {
     "required": ["loginToken"]
 };
 
+var acceptDeclineUserSchema = {
+  "properties": {
+    "username"   : {"type": "string", "format":"email", "minLength":1},
+    "loginToken" : {"type": "string", "minLength":1},
+  },
+    "required": ["loginToken"]
+};
+
 /**
  * [loginValidate description]
  * @param  {[type]} params [description]
@@ -40,7 +48,6 @@ var logoutSchema = {
  * @return {[type]}        [description]
  */
 userObj.loginValidate = function(params, callb){
-
 	var validRes = v.validate(params, loginSchema).errors;
 
 	if (!validRes.length) {
@@ -57,7 +64,6 @@ userObj.loginValidate = function(params, callb){
  * @return {[type]}        [description]
  */
 userObj.logoutValidate = function(params, callb){
-
     var validRes = v.validate(params, logoutSchema).errors;
 
     if (!validRes.length) {
@@ -74,7 +80,6 @@ userObj.logoutValidate = function(params, callb){
  * @return {[type]}        [description]
  */
 userObj.registrationValidate = function(params, callb){
-
 	var validRes = v.validate(params, adminRegsterSchema).errors;
 
 	if (!validRes.length) {

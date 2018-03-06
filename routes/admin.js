@@ -31,8 +31,8 @@ router.post('/addnew', respohandler.addLogToken, preValidate.adminRegisterValida
 // 										adminProcess.userRegister, respohandler.jsonResponse);
 
 //done
-// router.post('/acceptDeclineUser', respohandler.addLogToken, preValidate.userRegisterValidate, 
-// 										adminProcess.userRegister, respohandler.jsonResponse);
+router.post('/acceptDeclineUser', respohandler.addLogToken, adminProcess.acceptRejectUserProfile, 
+											respohandler.jsonResponse);
 
 //done
 // router.post('/acceptDeclineUpdate', respohandler.addLogToken, preValidate.userRegisterValidate, 
